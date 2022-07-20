@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "heroku-prebuild":"npm ci && npx tsc",
-    "start": "npm ci && tsc && cd dist && node app.js",
+    "start": "npm ci --dev && tsc && cd dist && node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
