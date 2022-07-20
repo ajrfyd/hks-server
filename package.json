@@ -4,7 +4,8 @@
   "description": "hk's node server",
   "main": "index.js",
   "scripts": {
-    "start": "npm ci && npx tsc && cd dist && node app.js",
+    "heroku-prebuild":"npm ci && npx tsc",
+    "start": "cd dist && node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
