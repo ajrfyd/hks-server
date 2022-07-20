@@ -25,6 +25,22 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/test', (req, res) => {
+  type Obj = {
+    id: number,
+    name: string,
+    date: string,
+  };
+
+  const obj: Obj = {
+    id: Math.floor(Math.random() * 10),
+    name: 'ajrfyd',
+    date: new Date().toLocaleTimeString()
+  }
+
+  res.json(obj);
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on ${process.env.PORT}`);
 });
