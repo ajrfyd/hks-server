@@ -10,7 +10,15 @@ dotenv.config({
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://about-hk.vercel.app',
+  ],
+  methods: [
+    'GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'
+  ]  
+}));
 app.use(express.urlencoded({
   extended: true,
 }));
