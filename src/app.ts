@@ -1,12 +1,16 @@
+// import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
-import path from 'path';
 import ejs from 'ejs';
+import path from 'path';
+import c from 'chalk';
+// import dotenv from 'dotenv';
 
-dotenv.config({
-  path: path.join(__dirname, '../.env')
-});
+
+const { log } = console;
+// dotenv.config({
+//   path: path.join(__dirname, '../.env')
+// });
 
 const app = express();
 
@@ -26,8 +30,8 @@ app.use(express.urlencoded({
 app.set('view engine', 'ejs');
 app.set('views', '../views');
 
-
 const PORT = process.env.PORT || 6000;
+log(c.blue(process.env.PORT));
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -50,5 +54,5 @@ app.get('/test', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server listening on ${process.env.PORT}`);
+  log(c.red(`Server listening on ${PORT}`));
 });
