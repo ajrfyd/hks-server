@@ -1,13 +1,14 @@
 // import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import ejs from 'ejs';
 import path from 'path';
-// import c from 'chalk';
+import c from 'chalk';
 import dotenv from 'dotenv';
 
+import wordleRoute from './routes/wordle';
 
 const { log } = console;
+
 dotenv.config({
   path: path.join(__dirname, '../.env')
 });
@@ -23,6 +24,7 @@ app.use(cors({
     'GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'
   ]  
 }));
+
 app.use(express.urlencoded({
   extended: true,
 }));
@@ -35,6 +37,10 @@ const PORT = process.env.PORT || 6000;
 
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+wordleRoute.forEach(({ method, route, handler }) => {
+  app[method](route, handler);
 });
 
 app.get('/test', (req, res) => {
@@ -54,5 +60,5 @@ app.get('/test', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  log(`Server listening on ${PORT}`);
+  log(c.red(`Server listening on ${PORT}`));
 });
