@@ -26,6 +26,12 @@ export const readDb = (target: string) => {
   }
 };
 
-export const writeDb = () => {
-
+export const writeDb = (target: string, data: unknown) => {
+  try {
+    return fs.writeFileSync(fileNames[target], JSON.stringify(data));
+  } catch(error ) {
+    if(error instanceof Error) {
+      throw new Error(error.message);
+    }
+  }
 };
