@@ -1,17 +1,16 @@
 import fs from 'fs';
 import { resolve } from 'path';
 import c from 'chalk';
+import { PathType } from './types';
 
 const { log } = console;
 const basePath = resolve('../');
 log(c.blue(basePath));
 
 
-type File = {
-  [key: string]: string;
-}
 
-const fileNames: File = {
+
+const fileNames: PathType = {
   wordle: resolve(basePath, 'src/db/wordle.json'),
 };
 

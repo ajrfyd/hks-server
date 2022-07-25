@@ -6,6 +6,7 @@ import c from 'chalk';
 import dotenv from 'dotenv';
 
 import wordleRoute from './routes/wordle';
+import { PathType } from './db/types';
 
 const { log } = console;
 
