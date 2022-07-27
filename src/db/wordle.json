@@ -1,6 +1,5 @@
 {
   "wordle": {
-    "todaysWord": "apple",
-    "currentTry": 0
+    "todaysWord": "apple"
   }
 }

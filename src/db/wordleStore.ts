@@ -1,28 +1,4 @@
-import { readDb } from "../db/dbController";
-import { Request, Response } from "express";
-import c from 'chalk';
-import { WordleData } from "../db/types";
-import { todaysWord } from "../db/wordleStore";
-
-const { log } = console;
-const BASE = '/wordle';
-
-const wordleRoute = [
-  {
-    method: 'get' as const,
-    route: BASE + '/todaysword',
-    handler: (req: Request, res: Response) => {
-      log(c.red(wordleData));
-      // const data = readDb('wordle');
-      // res.json(data.wordle);
-      res.json({ todaysWord: todaysWord() });
-    }
-  }
-]
-
-export default wordleRoute;
-
-const wordleData =
+const data =
 `aback
 abase
 abate
@@ -2338,3 +2314,11 @@ youth
 zebra
 zesty
 zonal`
+
+const wordleData = data.split('\n');
+
+const wordSet: Set<string> = new Set(wordleData);
+
+export const todaysWord = () => {
+  return data.split('\n')[Math.floor(Math.random() * wordSet.size)];
+};
