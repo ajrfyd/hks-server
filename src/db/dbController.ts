@@ -12,13 +12,15 @@ log(c.blue(basePath));
 
 const fileNames: PathType = {
   wordle: resolve(basePath, 'src/db/wordle.json'),
+  user: resolve(basePath, 'src/db/user.json'),
+  contents: resolve(basePath, 'src/db/contents.json')
 };
 
 
 
-export const readDb = (target: string) => {
+export const readDb = <T>(target: string) => {
   try {
-    return JSON.parse(fs.readFileSync(fileNames[target], 'utf-8'))
+    return <T>JSON.parse(fs.readFileSync(fileNames[target], 'utf-8'))
   } catch (error) {
     if(error instanceof Error) {
       throw new Error(error.message);

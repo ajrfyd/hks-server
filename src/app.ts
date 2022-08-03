@@ -6,7 +6,8 @@ import c from 'chalk';
 import dotenv from 'dotenv';
 
 import wordleRoute from './routes/wordle';
-import { PathType } from './db/types';
+import userRoute from './routes/user';
+import contentsRoute from './routes/contents';
 
 const { log } = console;
 
@@ -41,6 +42,14 @@ app.get('/', (req, res) => {
 });
 
 wordleRoute.forEach(({ method, route, handler }) => {
+  app[method](route, handler);
+});
+
+userRoute.forEach(({ method, route, handler}) => {
+  app[method](route, handler);
+});
+
+contentsRoute.forEach(({ method, route, handler }) => {
   app[method](route, handler);
 });
 
