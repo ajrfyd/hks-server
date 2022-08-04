@@ -23,7 +23,12 @@ app.use(cors({
     'https://about-hk.vercel.app',
   ],
   methods: [
-    'GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'
+    'GET', 
+    'POST', 
+    'DELETE', 
+    'PUT', 
+    'PATCH', 
+    'OPTIONS'
   ]  
 }));
 
