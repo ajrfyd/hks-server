@@ -21,8 +21,8 @@ const userRoute = [
     route: BASE,
     handler: (req: Request, res: Response) => {
       const data = readDb<ResType>('user');
-
-      if(!data) return
+      console.log(data);
+      if(!data) return;
       
       res.json(data.user);
     }

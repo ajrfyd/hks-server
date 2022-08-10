@@ -12,7 +12,6 @@ const wordleRoute = [
     method: 'get' as const,
     route: BASE + '/todaysword',
     handler: (req: Request, res: Response) => {
-      log(c.red(wordleData));
       // const data = readDb('wordle');
       // res.json(data.wordle);
       res.json({ todaysWord: todaysWord() });

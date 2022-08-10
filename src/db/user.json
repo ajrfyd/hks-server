@@ -1,12 +1,1 @@
-{
-  "user": [
-    {
-      "id": 1,
-      "userId": "ajrfyd",
-      "userName": "Mr. Lee",
-      "email": "ajrfyd@naver.com",
-      "password": "pwdpwd123",
-      "address": "SeongNam-Si"
-    }
-  ]
-}
+{"id":"524cb3ce-fd9d-46c6-ab7c-66b8bd61834b","userId":"ajrfyd","userName":"MR.Lee","email":"ajrfyd@nn.com","password":"qweqwe123","address":""}
