@@ -108,9 +108,9 @@ server.applyMiddleware({
   path: '/graphql',
   cors: {
     origin: [
-          'https://studio.apollographql.com',
           'http://localhost:3000',
           'https://about-hk.vercel.app',
+          'https://studio.apollographql.com',
         ],
     credentials: true,
   }
