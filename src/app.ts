@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import path from 'path';
 import c from 'chalk';
@@ -98,6 +98,9 @@ const server = new ApolloServer({
 
 const app = express();
 
+app.set('view engine', 'ejs');
+app.set('views', '../views');
+
 await server.start();
 
 server.applyMiddleware({
@@ -113,6 +116,9 @@ server.applyMiddleware({
   }
 })
 
+app.get('/', (req: Request, res: Response) => {
+  res.render('index');
+})
 
 await app.listen({ port: PORT });
 log(c.red(`Server Listening on ${PORT}`));
