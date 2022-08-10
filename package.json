@@ -4,7 +4,7 @@
   "description": "hk's node server",
   "main": "index.js",
   "scripts": {
-    "start": "npm ci --dev && npx tsc && cd dist && nodem app.js",
+    "start": "npm ci --dev && npx tsc && cd dist && node app.js",
     "dev": "ts-node src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
