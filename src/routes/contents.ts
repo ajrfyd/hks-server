@@ -1,4 +1,4 @@
-import { readDb } from "../db/dbController";
+import { readDb } from "../db/dbController.js";
 import { Request, Response } from "express";
 const BASE = '/contents';
 

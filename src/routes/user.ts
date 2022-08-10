@@ -1,6 +1,6 @@
 const BASE = '/user'
 import { Request, Response } from "express"
-import { readDb } from '../db/dbController';
+import { readDb } from '../db/dbController.js';
 
 type UserType = {
   id: number;
@@ -24,7 +24,7 @@ const userRoute = [
       console.log(data);
       if(!data) return;
       
-      res.json(data.user);
+      res.json(data);
     }
   }
 ]

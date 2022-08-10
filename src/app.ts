@@ -6,9 +6,9 @@ import dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server-express';
 import { readDb } from './db/dbController.js'
 
-import wordleRoute from './routes/wordle';
-import userRoute from './routes/user';
-import contentsRoute from './routes/contents';
+import wordleRoute from './routes/wordle.js';
+import userRoute from './routes/user.js';
+import contentsRoute from './routes/contents.js';
 
 import resolvers from './resolvers/index.js';
 import schema from './schema/index.js';
@@ -23,42 +23,42 @@ dotenv.config({
   path: path.resolve('../.env')
 })
 
-// const app = express();
+const app = express();
 
-// app.use(cors({
-//   origin: [
-//     'http://localhost:3000',
-//     'https://about-hk.vercel.app',
-//   ],
-//   methods: [
-//     'GET', 
-//     'POST', 
-//     'DELETE', 
-//     'PUT', 
-//     'PATCH', 
-//     'OPTIONS'
-//   ]  
-// }));
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://about-hk.vercel.app',
+  ],
+  methods: [
+    'GET', 
+    'POST', 
+    'DELETE', 
+    'PUT', 
+    'PATCH', 
+    'OPTIONS'
+  ]  
+}));
 
-// app.use(express.urlencoded({
-//   extended: true,
-// }));
+app.use(express.urlencoded({
+  extended: true,
+}));
 
 
 
-// app.set('view engine', 'ejs');
-// app.set('views', '../views');
+app.set('view engine', 'ejs');
+app.set('views', '../views');
 
-// const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 6000;
 
-// app.get('/', (req, res) => {
-//   res.render('index');
-// });
+app.get('/', (req, res) => {
+  res.render('index');
+});
 
-// const routes = [...wordleRoute, ...userRoute, ...contentsRoute];
-// routes.forEach(({ method, route, handler}) => {
-//   app[method](route, handler);
-// });
+const routes = [...wordleRoute, ...userRoute, ...contentsRoute];
+routes.forEach(({ method, route, handler}) => {
+  app[method](route, handler);
+});
 
 // wordleRoute.forEach(({ method, route, handler }) => {
 //   app[method](route, handler);
@@ -72,53 +72,53 @@ dotenv.config({
 //   app[method](route, handler);
 // });
 
-// app.get('/*', (req, res) => {
-//   res.send('Not Found');
-// });
+app.get('/*', (req, res) => {
+  res.send('Not Found');
+});
 
-// app.listen(PORT, () => {
-//   log(c.red(`Server listening on ${PORT}`));
-// });
+app.listen(PORT, () => {
+  log(c.red(`Server listening on ${PORT}`));
+});
 
 
 //! ---------------------------------------------
 
-const PORT = process.env.PORT || 6000;
+// const PORT = process.env.PORT || 6000;
 
-const server = new ApolloServer({
-  typeDefs: schema,
-  resolvers,
-  context: {
-    db: {
-      users: readDb('user'),
-      contents: readDb('contents')
-    }
-  },
-});
+// const server = new ApolloServer({
+//   typeDefs: schema,
+//   resolvers,
+//   context: {
+//     db: {
+//       users: readDb('user'),
+//       contents: readDb('contents')
+//     }
+//   },
+// });
 
-const app = express();
+// const app = express();
 
-app.set('view engine', 'ejs');
-app.set('views', '../views');
+// app.set('view engine', 'ejs');
+// app.set('views', '../views');
 
-await server.start();
+// await server.start();
 
-server.applyMiddleware({
-  app,
-  path: '/graphql',
-  cors: {
-    origin: [
-          'http://localhost:3000',
-          'https://about-hk.vercel.app',
-          'https://studio.apollographql.com',
-        ],
-    credentials: true,
-  }
-})
+// server.applyMiddleware({
+//   app,
+//   path: '/graphql',
+//   cors: {
+//     origin: [
+//           'http://localhost:3000',
+//           'https://about-hk.vercel.app',
+//           'https://studio.apollographql.com',
+//         ],
+//     credentials: true,
+//   }
+// })
 
-app.get('/', (req: Request, res: Response) => {
-  res.render('index');
-})
+// app.get('/', (req: Request, res: Response) => {
+//   res.render('index');
+// })
 
-await app.listen({ port: PORT });
-log(c.red(`Server Listening on ${PORT}`));
+// await app.listen({ port: PORT });
+// log(c.red(`Server Listening on ${PORT}`));

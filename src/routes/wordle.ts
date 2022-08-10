@@ -2,7 +2,7 @@ import { readDb } from "../db/dbController";
 import { Request, Response } from "express";
 import c from 'chalk';
 import { WordleData } from "../db/types";
-import { todaysWord } from "../db/wordleStore";
+import { todaysWord } from "../db/wordleStore.js";
 
 const { log } = console;
 const BASE = '/wordle';
